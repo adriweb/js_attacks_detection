@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>INSE6130 Project - Privacy violations detection - Summary of the detections</title>
+		<style>
+			html { width: 375px; }
+			h3 { margin-bottom: 2px; }
+		</style>
+	</head>
+	<body>
+		<div>
+			<h3>Number of requests to blacklisted domains:</h3>
+			<span id="blacklistCounter">0</span>
+			<br/>
+			<h3>Number of alleged attacks seen with patterns:</h3>
+			<span id="patternCounter">0</span>
+		</div>
+		<hr>
+		<div style="text-align:center;">
+			<button id="resetButton">Reset detection engine</button>
+		</div>
+		<script src='popup.js'></script>
+	</body>
+</html>

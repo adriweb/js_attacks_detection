@@ -10,5 +10,5 @@ for (var att in attacks) {
 	else
 		logWarning("The database's patterns for this attack is empty!", "    ");
 }
-	
+
 logExtensionMessage("------------- Detection engine loaded and ready -------------");

@@ -21,15 +21,15 @@ logExtensionMessage("--------------- Starting the detection engine -----------
 ////////////////  GLOBALS  ////////////////
 ///////////////////////////////////////////
 
-var currentTab, globalDetectionCounter, pageSource;
+var currentTab, globalDetectionCounter, patternCounter, blacklistCounter, pageSource;
 
 function resetEngine()
 {
 	currentTab = null;
-	globalDetectionCounter = 0;
+	globalDetectionCounter = patternCounter = blacklistCounter = 0;
 	pageSource = "";
 	chrome.browserAction.setBadgeText({text: ""});
-	logExtensionMessage("Global variables reseted");
+	logExtensionMessage("Global variables resetted");
 }
 resetEngine();
 
@@ -45,9 +45,10 @@ function addAttackBlacklistHandler(attack)
 			function(info) {
 				logWarning("Intercepted a request to a blacklisted domain providing " + attack["description"] + "!")
 				logInfo("Resource requested: " + info.url, "    ");
+				blacklistCounter++;
 				globalDetectionCounter++;
 				chrome.browserAction.setBadgeText({text: ""+globalDetectionCounter});
-				//return {redirectUrl: loldogs[i]};
+				//return {redirectUrl: ""}; // here we can simply block the request if wanted
 			},
 			{
 				urls: attack["blacklist"],
