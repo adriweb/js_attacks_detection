@@ -8,7 +8,6 @@
     "default_popup": "popup.html"
   },
   "background": {
-    //"pages": ["background.html"],
     "scripts": ["common.js", "attacks.js", "listeners.js", "background.js"]
   },
 

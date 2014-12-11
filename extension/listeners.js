@@ -19,7 +19,6 @@ chrome.extension.onMessage.addListener( function(request, sender) {
 				}
 				if (detected) {
 					patternCounter++;
-					chrome.extension.sendMessage({ action: "updatePatternCounter", value: patternCounter });
 					globalDetectionCounter++;
 					chrome.browserAction.setBadgeText({text: ""+globalDetectionCounter});
 					logWarning("Potential attack! A " + att["description"] + " pattern has been found on this page!");

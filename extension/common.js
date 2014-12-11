@@ -6,7 +6,7 @@
 /////////////////  UTILS  /////////////////
 ///////////////////////////////////////////
 
-var debugMode = true;
+var debugMode = false;
 function logDebugMessage(str) { if (debugMode) console.debug("%c[debug] "+str, "color: darkgrey; font-weight: bold;"); }
 function logExtensionMessage(str) { console.log("%c"+str, "font-weight: bold;"); }
 function logOK(str,indent) { if (typeof indent === "undefined") indent=""; console.log(indent+"%c✓ "+str, "color: green;"); }
