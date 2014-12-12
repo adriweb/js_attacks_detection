@@ -22,6 +22,7 @@ var attacks = {
                         "*://*.quantserve.com/*.js",                                                /*  quantserve  */
                         "*://cdn.optimizely.com/*.js",                                              /*  optimizely  */
                         "*://*/mouseflow.js", "*://cdn.mouseflow.com/projects/*",                   /*  mouseflow   */
+                        "*://pixel.facebook.com/*",                                                 /*  Facebook    */
                         "*://cdn.segment.com/analytics*",                                           /*  segment     */
                         "*://cdn.clicktale.net/*", "*://clicktalecdn.sslcs.cdngc.net/www/*",        /*  clicktale   */
                         "*://*/trak.io.min.js",                                                     /*  trak.io     */
@@ -38,7 +39,7 @@ var attacks = {
                         "*://d35tca7vmefkrc.cloudfront.net/*",                                      /*  foxmetrics  */
                         "*://*.gaug.es/track.js",                                                   /*  gaug.es     */
                         "*://*/s_code.js", "*://*/omniture.js",                                     /*  omniture... */
-                        "*://*/*tracker.js", "*://*/*track.js", "*://*/pix.gif"                     /*  *generic*   */
+                        "*://*/*track*.js", "*://*/*track.js", "*://*/pix.gif"                      /*  *generic*   */
                     ]
     },
     

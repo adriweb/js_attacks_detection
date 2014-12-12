@@ -6,7 +6,6 @@ chrome.extension.onMessage.addListener( function(request, sender) {
         case "gotSource":
             pageSource = request.source;
             logDebugMessage("Got page source (" + pageSource.length + " chars). Scanning...");
-            pageSource = pageSource.replace(/\s+/g, '').replace(/(?:\/\*(?:[\s\S]*?)\*\/)|(?:([\s;])+\/\/(?:.*)$)/gm, ''); // remove spaces and comments
             for (var key in attacks) {
                 var att = attacks[key];
                 var detected = false;
@@ -24,6 +23,7 @@ chrome.extension.onMessage.addListener( function(request, sender) {
                     logWarning("Potential attack! A " + att["description"] + " pattern has been found on this page!");
                 }
             }
+            logDebugMessage("Done scanning page.");
             break;
         case "resetEngine":
             resetEngine();
