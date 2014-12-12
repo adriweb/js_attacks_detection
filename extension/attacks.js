@@ -25,6 +25,7 @@ var attacks = {
                         "*://pixel.facebook.com/*",                                                 /*  Facebook    */
                         "*://cdn.segment.com/analytics*",                                           /*  segment     */
                         "*://cdn.clicktale.net/*", "*://clicktalecdn.sslcs.cdngc.net/www/*",        /*  clicktale   */
+                        "*://dnn506yrbagrg.cloudfront.net/pages/scripts/*",                         /*  crazyegg    */
                         "*://*/trak.io.min.js",                                                     /*  trak.io     */
                         "*://*/piwik.js",                                                           /*  piwik       */
                         "*://cdn.heapanalytics.com/js/heap.js",                                     /*  heap        */
