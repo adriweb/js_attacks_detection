@@ -25,11 +25,11 @@ var currentTab, globalDetectionCounter, patternCounter, blacklistCounter, pageSo
 
 function resetEngine()
 {
-	currentTab = null;
-	globalDetectionCounter = patternCounter = blacklistCounter = 0;
-	pageSource = "";
-	chrome.browserAction.setBadgeText({text: ""});
-	logExtensionMessage("Global variables resetted");
+    currentTab = null;
+    globalDetectionCounter = patternCounter = blacklistCounter = 0;
+    pageSource = "";
+    chrome.browserAction.setBadgeText({text: ""});
+    logExtensionMessage("Global variables resetted");
 }
 resetEngine();
 
@@ -40,34 +40,34 @@ resetEngine();
 
 function addAttackBlacklistHandler(attack)
 {
-	if (attack["blacklist"].length > 0) {
-		chrome.webRequest.onBeforeRequest.addListener(
-			function(info) {
-				logWarning("Intercepted a request to a blacklisted domain providing " + attack["description"] + "!")
-				logInfo("Resource requested: " + info.url, "    ");
-				blacklistCounter++;
-				globalDetectionCounter++;
-				chrome.browserAction.setBadgeText({text: ""+globalDetectionCounter});
-				//return {redirectUrl: ""}; // here we can simply block the request if wanted
-			},
-			{
-				urls: attack["blacklist"],
-			},
-			["blocking"]
-		);
-		logOK("Blacklist-based detection ready.", "    ");
-	} else {
-		logWarning("The database's blacklist for this attack is empty!", "    ");
-	}
+    if (attack["blacklist"].length > 0) {
+        chrome.webRequest.onBeforeRequest.addListener(
+            function(info) {
+                logWarning("Intercepted a request to a blacklisted domain providing " + attack["description"] + "!")
+                logInfo("Resource requested: " + info.url, "    ");
+                blacklistCounter++;
+                globalDetectionCounter++;
+                chrome.browserAction.setBadgeText({text: ""+globalDetectionCounter});
+                //return {redirectUrl: ""}; // here we can simply block the request if wanted
+            },
+            {
+                urls: attack["blacklist"],
+            },
+            ["blocking"]
+        );
+        logOK("Blacklist-based detection ready.", "    ");
+    } else {
+        logWarning("The database's blacklist for this attack is empty!", "    ");
+    }
 }
 
 function getSource_wrapper() {
-	var tabURL = "";
-	chrome.tabs.getSelected(null, function(tab) {
-		tabURL = tab.url;
-		if (tabURL.length && tabURL.indexOf("chrome://") == -1 && tabURL.indexOf("chrome-devtools://") == -1 && tabURL.indexOf("view-source:") == -1) {
-			logDebugMessage("Getting source of current tab : " + tabURL);
-			chrome.tabs.executeScript(null, { file: "getPageSource.js", runAt: 'document_end' }, function() {} );
-		}
-	});
+    var tabURL = "";
+    chrome.tabs.getSelected(null, function(tab) {
+        tabURL = tab.url;
+        if (tabURL.length && tabURL.indexOf("chrome://") == -1 && tabURL.indexOf("chrome-devtools://") == -1 && tabURL.indexOf("view-source:") == -1) {
+            logDebugMessage("Getting source of current tab : " + tabURL);
+            chrome.tabs.executeScript(null, { file: "getPageSource.js", runAt: 'document_end' }, function() {} );
+        }
+    });
 }
